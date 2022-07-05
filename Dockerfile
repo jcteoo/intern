@@ -2,12 +2,14 @@
 
 FROM python:3.9.2
 
-WORKDIR /disinformation.py
+ENV APP_HOME /app
 
-COPY requirements.txt requirements.txt
+WORKDIR $APP_HOME
+
+# COPY requirements.txt requirements.txt
+
+COPY . ./
 
 RUN pip3 install -r requirements.txt
 
-COPY . .
-
-CMD [ "python3", "-m" , "flask", "run"]
+CMD python3 disinformation.py
